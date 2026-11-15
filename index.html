@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>WebView Spoof Test</title>
-</head>
-<body>
-  <h2>Test URL Display di In-App Browser</h2>
-  <p>Link ini sengaja pakai userinfo panjang untuk test truncation.</p>
-  <a href="https://google.com.google.com.google.com@evil.com">
-    Klik link ini dari dalam app (bukan browser biasa)
-  </a>
-</body>
-</html>
+<a href="data:text/html,<h1>Test Data URI</h1><script>document.title='Fake Title'</script>">
+  Klik untuk buka data URI
+</a>
