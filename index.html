@@ -1,3 +1,23 @@
-<a href="data:text/html,<h1>Test Data URI</h1><script>document.title='Fake Title'</script>">
-  Klik untuk buka data URI
-</a>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>PoC - Data URI Auto Redirect Test</title>
+</head>
+<body>
+  <h2>Test: Auto-redirect ke data: URI</h2>
+  <p>Halaman ini akan otomatis redirect ke data: URI setelah 1 detik.</p>
+  <p>Perhatikan address bar sebelum dan sesudah redirect.</p>
+  <p id="status">Menunggu redirect...</p>
+
+  <script>
+    console.log('Origin saat ini:', location.href);
+
+    setTimeout(function() {
+      document.getElementById('status').textContent = 'Redirecting sekarang...';
+      console.log('Redirect ke data: URI...');
+      location.href = 'data:text/html,<h1>Spoofed content</h1><p>Ini konten dari data URI, cek address bar!</p>';
+    }, 1000);
+  </script>
+</body>
+</html>
